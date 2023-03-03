@@ -2,11 +2,15 @@ import express from "express";
 import { usuarioRouter } from "./router/usuarios.router.js";
 import { citasRouter } from "./router/citas.router.js";
 import { petRouter } from "./router/pet.router.js";
+import cors from 'cors';
 import mongoose from "mongoose";
 import { validarToken } from "./utils/validador.js";
 const server = express();
 
 server.use(express.json());
+server.use(cors());
+server.options('*', cors()); // include before other routes
+
 
 server.all("/citas",validarToken)
 server.all("/citas/:id",validarToken)
