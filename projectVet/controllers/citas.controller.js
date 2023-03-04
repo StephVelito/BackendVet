@@ -31,9 +31,9 @@ export const crearCitas = async (req, res) => {
   usuario_encontrado.citas.push(cita_creada._id);
   await usuario_encontrado.save();
 
-  const pet_encontrado = await PetModel.findById(idPet);
-  pet_encontrado.citas.push(cita_creada._id);
-  await pet_encontrado.save();
+  // const pet_encontrado = await PetModel.findById(idPet);
+  // pet_encontrado.citas.push(cita_creada._id);
+  // await pet_encontrado.save();
 
   return res.json({
     message: "Cita creada exitosamente",

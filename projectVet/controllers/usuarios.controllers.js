@@ -69,6 +69,7 @@ export const login = async (req, res) => {
   const data = req.body;
 
   const usuarioEncontrado = await UsuarioModel.findOne({ correo: data.correo });
+  console.log(usuarioEncontrado._id);
 
   if (!usuarioEncontrado) {
     return res.status(404).json({
@@ -90,6 +91,7 @@ export const login = async (req, res) => {
     const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: "1h" });
 
     return res.json({
+      id: usuarioEncontrado._id,
       mesagge: "Bienvenido",
       content: token,
     });
